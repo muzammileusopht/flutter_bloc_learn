@@ -12,19 +12,25 @@ class LoaderPage extends StatefulWidget {
 class _LoaderPageState extends State<LoaderPage> {
   @override
   Widget build(BuildContext context) {
+    print('whole screen updated');
     return  Scaffold(
       appBar: AppBar(title: Text('Showing Loader With Bloc'), centerTitle: true,),
       body: BlocBuilder <LaoderCubit, String>(
         builder: (context, ohhloader) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ohhloader == 'started'? CircularProgressIndicator() : Text('Loader is Stopped'),
            
-            Row(
-            children: [
-              ElevatedButton(onPressed: (){context.read<LaoderCubit>().startLoader();}, child: Text('start Loader')),
-              ElevatedButton(onPressed: (){}, child: Text('stop Loader')),
-            ],
-          )
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: (){context.read<LaoderCubit>().startLoader();}, child: Text('start Loader')),
+                SizedBox(width: 12,),
+                ElevatedButton(onPressed: (){context.read<LaoderCubit>().stopLoader();}, child: Text('stop Loader')),
+              ],
+                        ),
+            )
           ],
         )
         )

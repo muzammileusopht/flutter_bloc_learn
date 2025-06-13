@@ -7,6 +7,7 @@ class CounterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('build once');
     return Scaffold(
       appBar: AppBar(title: const Text('Counter')),
       body: BlocBuilder<CounterCubit, int>(
